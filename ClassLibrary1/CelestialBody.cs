@@ -44,11 +44,12 @@ namespace ClassLibrary1
             Radius = 10;
             id = new IdNumber(1);
         }
-        public CelestialBody(string name, double weight, double radius) //конструктор c параметрами
+        public CelestialBody(string name, double weight, double radius, int id) //конструктор c параметрами
         {
             Name = name;
             Weight = weight;
             Radius = radius;
+            this.id = new IdNumber(id);
         }
         public virtual void Show()
         {
@@ -56,7 +57,7 @@ namespace ClassLibrary1
         }
         public override string ToString()
         {
-            return $"Небесное тело: Имя = {Name};  Вес = {Weight}; Радиус = {Radius}";
+            return $"Небесное тело: Имя = {Name};  Вес = {Weight}; Радиус = {Radius}; id: {id.Number}";
         }
         public virtual void Init(string name, double weight, double radius)
         {
@@ -121,7 +122,11 @@ namespace ClassLibrary1
         }
         public object Clone()
         {
-            return new CelestialBody(Name, Weight, Radius);
+            return new CelestialBody(Name, Weight, Radius, id.Number);
+        }
+        public object ShallowCopy()
+        {
+            return this.MemberwiseClone();
         }
     }
 }

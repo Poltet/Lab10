@@ -139,11 +139,11 @@ namespace Lab10
             {
                 Console.WriteLine(item);
             }
-            //bin
-            CelestialBody cb = new CelestialBody("Ф12",100,122);
+            //bin                                                  //бинарный поиск
+            CelestialBody cb = new CelestialBody("Ф12",100,122,1);
             array1[5] = cb;
             Array.Sort (array1);
-            int index = Array.BinarySearch(array1, new CelestialBody("Ф12", 100, 122));
+            int index = Array.BinarySearch(array1, new CelestialBody("Ф12", 100, 122,1));
             Console.WriteLine("Новый массив отсортирован\n");
             foreach (IInit item in array1)
             {
@@ -153,6 +153,25 @@ namespace Lab10
                 Console.WriteLine("Элемент не найден"); 
             else
                 Console.WriteLine($"index 'B12' = {index + 1}");
+            //Copy                                             //копия и клон     
+            CelestialBody body = new CelestialBody();
+            body.RandomInit();
+            Console.WriteLine($"оригинал:  {body}");
+            
+            CelestialBody copy = (CelestialBody)body.ShallowCopy();
+            Console.WriteLine($"Copy:  {copy}");
+
+            CelestialBody clon = (CelestialBody)body.Clone();
+            Console.WriteLine($"Clon:  {clon}");
+            Console.WriteLine("После изменения");
+            copy.Name = "copy";
+            copy.id.Number = 100;
+            clon.Name = "clon";
+            clon.id.Number = 200;
+            Console.WriteLine(body);
+            Console.WriteLine(copy);
+            Console.WriteLine(clon);
+
 
             Console.ReadLine();
         }
