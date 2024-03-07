@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ClassLibrary1
 {
@@ -71,19 +67,26 @@ namespace ClassLibrary1
         }
         public virtual void Init()
         {
-            Console.WriteLine("Введите название");
+            Console.WriteLine("Введите название небесного тела");
             Name = Console.ReadLine();
-            Console.WriteLine("Введите массу");
+            Console.WriteLine("Введите массу небесного тела");
             try
             {
                 Weight = int.Parse(Console.ReadLine());
             }
-            catch { Weight = 100; }
+            catch 
+            { 
+                Weight = 100;
+            }
+            Console.WriteLine("Введите радиус небесного тела");
             try
             {
                 Radius = int.Parse(Console.ReadLine());
             }
-            catch { Radius = 100; }
+            catch
+            {
+                Radius = 100;
+            }
         }
 
         public virtual void RandomInit()

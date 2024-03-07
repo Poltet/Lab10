@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.Eventing.Reader;
 using ClassLibrary1;
 
 namespace Lab10
@@ -87,10 +86,60 @@ namespace Lab10
             }
             Console.WriteLine("===== Конец массива с использованием не виртуальных методов ====\n");
 
-            StarTemperature(array1);
+            StarTemperature(array1);           //2 part
             GasGigantRadius(array1);
             PlanetWeight(array1);
-          
+
+            //3 part
+            IInit[] array2 = new ClassLibrary1.IInit[15];
+            for (int i = 0; i < 3; i++)            // Небесное тело
+            {
+                CelestialBody C = new CelestialBody();
+                C.RandomInit();
+                array2[i] = C;
+            }
+            for (int i = 3; i < 6; i++)            // Звезды
+            {
+                Star S = new Star();
+                S.RandomInit();
+                array2[i] = S;
+            }
+            for (int i = 6; i < 9; i++)            // Планеты
+            {
+                Planet P = new Planet();
+                P.RandomInit();
+                array2[i] = P;
+            }
+            for (int i = 9; i < 12; i++)           // Газовые гиганты
+            {
+                GasGigant G = new GasGigant();
+                G.RandomInit();
+                array2[i] = G;
+            }
+            for (int i = 12; i < 15; i++)          // Парковки
+            {
+                CarParking P = new CarParking();
+                P.RandomInit();
+                array2[i] = P;
+            }
+            Console.WriteLine("Исходный массив");
+            foreach (IInit item in array1)
+            {
+                Console.WriteLine(item);
+            }
+            Array.Sort(array1);                      //Cортировка массива по имени, метод Sort
+            Console.WriteLine("Массив отсортирован по имени");
+            foreach (IInit item in array1)
+            {
+                Console.WriteLine(item);
+            }
+            Array.Sort (array1 , new SortByWeight());
+            Console.WriteLine("Массив отсортирован по весу");
+            foreach (IInit item in array1)
+            {
+                Console.WriteLine(item);
+            }
+
 
             Console.ReadLine();
         }

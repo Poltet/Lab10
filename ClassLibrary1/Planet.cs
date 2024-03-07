@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClassLibrary1
 {
@@ -30,10 +26,6 @@ namespace ClassLibrary1
         {
             Satellites = satellites;
         }
-        //public override void Show()
-        //{
-        //    Console.WriteLine($"Планета: Имя = {Name};  Вес = {Weight};  Радиус = {Radius};  Кол-во спутников = {Satellites}\n");
-        //}
         public override string ToString()
         {
             return "Планета: " + base.ToString() + $"; Кол -во спутников = {Satellites}";
@@ -41,6 +33,7 @@ namespace ClassLibrary1
         public override void Init()
         {
             base.Init();
+            Console.WriteLine("Введите количество спутникв плнеты");
             try
             {
                 Satellites = int.Parse(Console.ReadLine());
