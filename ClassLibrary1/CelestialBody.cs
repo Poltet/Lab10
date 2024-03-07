@@ -3,11 +3,10 @@
 
 namespace ClassLibrary1
 {
-    public class CelestialBody: IInit, IComparable
+    public class CelestialBody: IInit, IComparable, ICloneable
     {
         protected double weight;
         protected double radius;
-        public static int count = 0;  //счетчик небесных тел
         protected Random rand = new Random();
         public string Name { get; set; }  //название
         public double Weight              //масса
@@ -36,17 +35,17 @@ namespace ClassLibrary1
                 else radius = value;
             }
         }
+        public IdNumber id;               //индекс
         static string[] Names = {"Сириус", "Солнце", "Земля", "Марс", "Юпитер", "Вега", "Антарес", "Арктур", "Алькор", "Сатурн", "Уран", "Нептун", "Тампеля", "Глизе", "Денеб", "Мицар", "Алиот", "Кастор", "Авиор", "Луна", "Ио", "Диона", "Тефия", "Миранда" };
         public CelestialBody()            //конструктор без параметров
         {
-            count++;
-            Name = $"Небесное тело {count}";
+            Name = $"A510";
             Weight = 10;
             Radius = 10;
+            id = new IdNumber(1);
         }
         public CelestialBody(string name, double weight, double radius) //конструктор c параметрами
         {
-            count++;
             Name = name;
             Weight = weight;
             Radius = radius;
@@ -67,12 +66,21 @@ namespace ClassLibrary1
         }
         public virtual void Init()
         {
+            Console.WriteLine("Введите id");
+            try
+            {
+                id.Number = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                id.Number = 0;
+            }
             Console.WriteLine("Введите название небесного тела");
             Name = Console.ReadLine();
             Console.WriteLine("Введите массу небесного тела");
             try
             {
-                Weight = int.Parse(Console.ReadLine());
+                Weight = double.Parse(Console.ReadLine());
             }
             catch 
             { 
@@ -81,7 +89,7 @@ namespace ClassLibrary1
             Console.WriteLine("Введите радиус небесного тела");
             try
             {
-                Radius = int.Parse(Console.ReadLine());
+                Radius = double.Parse(Console.ReadLine());
             }
             catch
             {
@@ -94,6 +102,7 @@ namespace ClassLibrary1
             Name = Names[rand.Next(Names.Length)];
             Weight = rand.Next(0, 10000) + Math.Round(rand.NextDouble(), 2);
             Radius = rand.Next(0, 10000) + Math.Round(rand.NextDouble(), 2);
+            id.Number = rand.Next(1,100);
         }
         public override bool Equals(object obj)
         {
@@ -109,6 +118,10 @@ namespace ClassLibrary1
                 return String.Compare(this.Name, c.Name);
             else return -1;
             
+        }
+        public object Clone()
+        {
+            return new CelestialBody(Name, Weight, Radius);
         }
     }
 }

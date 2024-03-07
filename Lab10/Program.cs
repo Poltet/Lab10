@@ -139,7 +139,20 @@ namespace Lab10
             {
                 Console.WriteLine(item);
             }
-
+            //bin
+            CelestialBody cb = new CelestialBody("Ф12",100,122);
+            array1[5] = cb;
+            Array.Sort (array1);
+            int index = Array.BinarySearch(array1, new CelestialBody("Ф12", 100, 122));
+            Console.WriteLine("Новый массив отсортирован\n");
+            foreach (IInit item in array1)
+            {
+                Console.WriteLine(item);
+            }
+            if (index < 0)
+                Console.WriteLine("Элемент не найден"); 
+            else
+                Console.WriteLine($"index 'B12' = {index + 1}");
 
             Console.ReadLine();
         }
