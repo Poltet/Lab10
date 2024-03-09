@@ -128,6 +128,26 @@ namespace UnitTest
             actual.Weight = 100;           
             Assert.AreNotEqual(expected, actual);
         }
+        [TestMethod]
+        public void TestMethod_CompareTo()                  //Сортировка по имени
+        {
+            CelestialBody[] array = new CelestialBody[3];
+            array[0] = new CelestialBody("B",1,1,1);
+            array[1] = new CelestialBody("C",1,1,1);
+            array[2] = new CelestialBody ("A",1,1,1);
+            Array.Sort(array);
+            Assert.IsTrue(array[0].Name == "A");
+        }
+        [TestMethod]
+        public void TestMethod_WeightComparer()             //Сортировка по весу (второй параметр)
+        {
+            CelestialBody[] array = new CelestialBody[3];
+            array[0] = new CelestialBody("B", 30, 1, 1);
+            array[1] = new CelestialBody("C", 10, 1, 1);
+            array[2] = new CelestialBody("A", 20, 1, 1);
+            Array.Sort(array, new WeightComparer());
+            Assert.IsTrue(array[0].Weight == 10);
+        }
         //===== class Planet =====
 
         [TestMethod]
