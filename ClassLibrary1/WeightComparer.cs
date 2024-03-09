@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace ClassLibrary1
 {
-    public class SortByWeight : IComparer
+    public class WeightComparer: IComparer
     {
         public int Compare(object x, object y)
         {

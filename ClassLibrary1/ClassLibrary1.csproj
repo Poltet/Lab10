@@ -48,7 +48,7 @@
     <Compile Include="IInit.cs" />
     <Compile Include="Planet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SortByWeight.cs" />
+    <Compile Include="WeightComparer.cs" />
     <Compile Include="Star.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

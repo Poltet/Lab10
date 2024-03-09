@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace ClassLibrary1
 {
     public class CelestialBody: IInit, IComparable, ICloneable
@@ -67,7 +66,7 @@ namespace ClassLibrary1
         }
         public virtual void Init()
         {
-            Console.WriteLine("Введите id");
+            Console.WriteLine("Введите id");  // Метод для ввода  с клавиатуры
             try
             {
                 id.Number = int.Parse(Console.ReadLine());
@@ -97,8 +96,7 @@ namespace ClassLibrary1
                 Radius = 100;
             }
         }
-
-        public virtual void RandomInit()
+        public virtual void RandomInit()      // Метод для формирования объектов класса с помощью ДСЧ
         {
             Name = Names[rand.Next(Names.Length)];
             Weight = rand.Next(0, 10000) + Math.Round(rand.NextDouble(), 2);
@@ -109,22 +107,20 @@ namespace ClassLibrary1
         {
             if (obj == null || GetType() != obj.GetType())
                 return false;
-            return ((CelestialBody)obj).Weight == Weight && ((CelestialBody)obj).Radius == Radius && ((CelestialBody)obj).Name == Name;
+            return ((CelestialBody)obj).Weight == Weight && ((CelestialBody)obj).Radius == Radius && ((CelestialBody)obj).Name == Name && ((CelestialBody)obj).id.Number == id.Number;
         }
-
         public int CompareTo(object obj)
         {
             CelestialBody c = obj as CelestialBody;
             if (c != null)
                 return String.Compare(this.Name, c.Name);
-            else return -1;
-            
+            else return -1;         
         }
-        public object Clone()
+        public object Clone()                 //Глубокая копия
         {
             return new CelestialBody(Name, Weight, Radius, id.Number);
         }
-        public object ShallowCopy()
+        public object ShallowCopy()           //Поверхностное копирование
         {
             return this.MemberwiseClone();
         }

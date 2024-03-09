@@ -47,6 +47,8 @@ namespace Lab10
         }
         static void Main(string[] args)
         {
+            //CarParking p = new CarParking(1, 1);
+            //p++;
             CelestialBody[] array1 = new CelestialBody[20];
             for (int i = 0; i < 5; i++)               // Небесное тело
             {
@@ -127,19 +129,19 @@ namespace Lab10
             {
                 Console.WriteLine(item);
             }
-            Array.Sort(array1);                      //Cортировка массива по имени, метод Sort
+            Array.Sort(array1);                    //Cортировка массива по имени, метод Sort
             Console.WriteLine("Массив отсортирован по имени");
             foreach (IInit item in array1)
             {
                 Console.WriteLine(item);
             }
-            Array.Sort (array1 , new SortByWeight());
+            Array.Sort (array1 , new WeightComparer()); //Сортировка по весу, Comparer
             Console.WriteLine("Массив отсортирован по весу");
             foreach (IInit item in array1)
             {
                 Console.WriteLine(item);
             }
-            //bin                                                  //бинарный поиск
+            //bin                                  //бинарный поиск
             CelestialBody cb = new CelestialBody("Ф12",100,122,1);
             array1[5] = cb;
             Array.Sort (array1);
@@ -153,7 +155,7 @@ namespace Lab10
                 Console.WriteLine("Элемент не найден"); 
             else
                 Console.WriteLine($"index 'B12' = {index + 1}");
-            //Copy                                             //копия и клон     
+            //Copy                                 //копия и клон     
             CelestialBody body = new CelestialBody();
             body.RandomInit();
             Console.WriteLine($"оригинал:  {body}");
