@@ -43,7 +43,7 @@ namespace UnitTest
             Assert.ThrowsException<Exception>(() => { new CarParking(6, 2); });
         }
         [TestMethod]
-        public void TestMethod_Carparking_Workload()         // загруженность парковки, статический и нестатичесский метод
+        public void TestMethod_Carparking_Workload()         // Загруженность парковки, статический и нестатичесский метод
         {
             CarParking p = new CarParking(2, 3);
             double expected = p.Workload();
@@ -106,7 +106,7 @@ namespace UnitTest
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void TestMethod_CelestialBody_Error()         //отрицательный вес, радиус, индекс небесного тела
+        public void TestMethod_CelestialBody_Error()         //Отрицательный вес, радиус, индекс небесного тела
         {
             CelestialBody expected = new CelestialBody("N20", -20, -10, -1);
             CelestialBody actual = new CelestialBody("N20", 0, 0, 0);
@@ -118,6 +118,14 @@ namespace UnitTest
             CelestialBody expected = new CelestialBody("F10", 50, 10, 1);
             CelestialBody actual = (CelestialBody)expected.Clone();
             actual.Weight = 100;
+            Assert.AreNotEqual(expected, actual);
+        }
+        [TestMethod]
+        public void TestMethod_CelestialBody_Copy()         //Поверхностное копирование
+        {
+            CelestialBody expected = new CelestialBody("F10", 50, 10, 1);
+            CelestialBody actual = (CelestialBody)expected.ShallowCopy();          
+            actual.Weight = 100;           
             Assert.AreNotEqual(expected, actual);
         }
         //===== class Planet =====

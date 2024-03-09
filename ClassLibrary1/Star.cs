@@ -21,14 +21,7 @@ namespace ClassLibrary1
         {
             base.Init();
             Console.WriteLine("Введите температуру звезды");
-            try
-            {
-                 Temperature = int.Parse(Console.ReadLine());
-            }
-            catch
-            {
-                Temperature = 0;
-            }
+            Temperature = DoubleInput();
         }
         public override void RandomInit()
         {

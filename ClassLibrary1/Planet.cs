@@ -34,14 +34,7 @@ namespace ClassLibrary1
         {
             base.Init();
             Console.WriteLine("Введите количество спутникв плнеты");
-            try
-            {
-                Satellites = int.Parse(Console.ReadLine());
-            }
-            catch
-            {
-                Satellites = 0;
-            }
+            Satellites = IntInput();
         }
         public override void RandomInit()
         {

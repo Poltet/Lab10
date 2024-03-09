@@ -21,17 +21,10 @@ namespace ClassLibrary1
         {
             base.Init();
             Console.WriteLine("Введите количество колец");
-            try
-            {
-                int K = int.Parse(Console.ReadLine());
-                if (K > 0 ) 
-                    Rings = true;
-                else Rings = false;
-            }
-            catch
-            {
-                Rings= false;
-            }
+            int K = IntInput();
+            if (K > 0)
+                Rings = true;
+            else Rings = false;
         }
         public override void RandomInit()
         {

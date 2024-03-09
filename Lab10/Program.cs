@@ -3,7 +3,7 @@ using ClassLibrary1;
 
 namespace Lab10
 {
-    internal class Program
+    public class Program
     {
         static void StarTemperature(CelestialBody[] array)   //Средняя температура всех звёзд
         {
