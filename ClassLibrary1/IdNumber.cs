@@ -8,7 +8,21 @@ namespace ClassLibrary1
 {
     public class IdNumber
     {
-        public int Number { get; set; }
+        int number;
+        public int Number
+        {
+            get { return number; }
+            set
+            {
+                if (value < 0)
+                {
+                    number = 0;
+                    Console.WriteLine("Индекс не может быть меньше 0");
+                }
+                else number = value;
+            }
+        }
+        
         public IdNumber(int Number)
         {
             this.Number = Number;

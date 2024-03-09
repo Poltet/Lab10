@@ -47,8 +47,6 @@ namespace Lab10
         }
         static void Main(string[] args)
         {
-            //CarParking p = new CarParking(1, 1);
-            //p++;
             CelestialBody[] array1 = new CelestialBody[20];
             for (int i = 0; i < 5; i++)               // Небесное тело
             {

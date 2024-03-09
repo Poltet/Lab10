@@ -7,7 +7,7 @@ namespace ClassLibrary1
         public double Temperature { get; set; }     //температура 
         public Star() : base()                      //конструктор без парамеров 
         {
-            Temperature = -50.9;
+            Temperature = -50;
         }
         public Star(double temperature) : base()
         {

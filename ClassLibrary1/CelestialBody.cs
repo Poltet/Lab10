@@ -58,11 +58,12 @@ namespace ClassLibrary1
         {
             return $"Небесное тело: Имя = {Name};  Вес = {Weight}; Радиус = {Radius}; id: {id.Number}";
         }
-        public virtual void Init(string name, double weight, double radius)
+        public virtual void Init(string name, double weight, double radius, int id)
         {
             Name = name;
             Weight = weight;
             Radius = radius;
+            this.id = new IdNumber(id);
         }
         public virtual void Init()
         {
@@ -105,10 +106,17 @@ namespace ClassLibrary1
         }
         public override bool Equals(object obj)
         {
-            if (obj == null || GetType() != obj.GetType())
-                return false;
-            return ((CelestialBody)obj).Weight == Weight && ((CelestialBody)obj).Radius == Radius && ((CelestialBody)obj).Name == Name && ((CelestialBody)obj).id.Number == id.Number;
+            if (obj == null) return false;
+            if (obj is CelestialBody c)
+                return this.Name == c.Name && this.Weight == c.Weight && this.Radius == c.Radius && this.id.Number == c.id.Number;
+            return false;
         }
+        //public override bool Equals(object obj)
+        //{
+        //    if (obj == null || GetType() != obj.GetType())
+        //        return false;
+        //    return ((CelestialBody)obj).Weight == Weight && ((CelestialBody)obj).Radius == Radius && ((CelestialBody)obj).Name == Name && ((CelestialBody)obj).id.Number == id.Number;
+        //}
         public int CompareTo(object obj)
         {
             CelestialBody c = obj as CelestialBody;
