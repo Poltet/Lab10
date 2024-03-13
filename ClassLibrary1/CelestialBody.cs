@@ -2,12 +2,22 @@
 
 namespace ClassLibrary1
 {
-    public class CelestialBody: IInit, IComparable, ICloneable
+    public class CelestialBody: IInit, IComparable//, ICloneable
     {
         protected double weight;
         protected double radius;
+        protected string name;
         protected Random rand = new Random();
-        public string Name { get; set; }  //название
+        public string Name                //название
+        {
+            get { return name; }
+            set
+            {
+                if (value == "" || value == null)
+                    name = "No name";
+                else name = value;
+            }
+        }
         public double Weight              //масса
         {
             get { return weight; }
@@ -58,16 +68,20 @@ namespace ClassLibrary1
         {
             return $"Небесное тело: Имя = {Name};  Вес = {Weight}; Радиус = {Radius}; id: {id.Number}";
         }
+        public void ShowCelBody()
+        {
+            Console.WriteLine($"Небсное тело: Имя = {Name};  Вес = {Weight};  Радиус = {Radius}\n");
+        }
         public virtual void Init()
         {
             Console.WriteLine("Введите id");  // Метод для ввода  с клавиатуры
-            id.Number = IntInput();
+            id.Number = Input.IntInput();
             Console.WriteLine("Введите название небесного тела");
             Name = Console.ReadLine();
             Console.WriteLine("Введите массу небесного тела");
-            Weight = DoubleInput();
+            Weight = Input.DoubleInput();
             Console.WriteLine("Введите радиус небесного тела");
-            Radius = DoubleInput();
+            Radius = Input.DoubleInput();
 
         }
         public virtual void RandomInit()      // Метод для формирования объектов класса с помощью ДСЧ
@@ -80,10 +94,10 @@ namespace ClassLibrary1
         public override bool Equals(object obj)
         {
             if (obj == null) return false;
-            if (obj is CelestialBody c)
-                return this.Name == c.Name && this.Weight == c.Weight && this.Radius == c.Radius && this.id.Number == c.id.Number;
-            return false;
-        }
+            CelestialBody c = (CelestialBody)obj;
+            return Name == c.Name  && Weight == c.Weight && Radius == c.Radius && id.Number == c.id.Number;
+            //return ((CelestialBody)obj).Name == Name && ((CelestialBody)obj).Radius == Radius && ((CelestialBody)obj).Weight == Weight && ((CelestialBody)obj).id.Number == id.Number;
+        } 
         public int CompareTo(object obj)
         {
             CelestialBody c = obj as CelestialBody;
@@ -98,28 +112,6 @@ namespace ClassLibrary1
         public object ShallowCopy()           //Поверхностное копирование
         {
             return this.MemberwiseClone();
-        }
-        public static int IntInput()          //Метод для ввода целого числа
-        {
-            try
-            {
-                return int.Parse(Console.ReadLine());
-            }
-            catch
-            {
-                return 0;
-            }
-        }
-        public static double DoubleInput()    //Метод для ввода дробного числа
-        {
-            try
-            {
-                return double.Parse(Console.ReadLine());
-            }
-            catch
-            {
-                return 0;
-            }
         }
     }
 }

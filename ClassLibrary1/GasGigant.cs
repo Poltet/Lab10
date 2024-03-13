@@ -9,7 +9,7 @@ namespace ClassLibrary1
         {
             Rings = true;
         }
-        public GasGigant(bool rings) : base()
+        public GasGigant(string name, double weight, double radius, int id, int satellites, bool rings) : base(name, weight, radius, id, satellites)
         {
             Rings = rings;
         }
@@ -17,11 +17,15 @@ namespace ClassLibrary1
         {
             return "Газовый гигант: " + base.ToString() + $" ;Наличие колец - {Rings}";
         }
+        public override void Show()
+        {
+            Console.WriteLine($"Газовый гигант:\nИмя = {Name};  Вес = {Weight};  Радиус = {Radius};  Кол-во спутников = {Satellites};  Наличие колец - {Rings}\n");
+        }
         public override void Init()
         {
             base.Init();
             Console.WriteLine("Введите количество колец");
-            int K = IntInput();
+            int K = Input.IntInput();
             if (K > 0)
                 Rings = true;
             else Rings = false;
@@ -29,9 +33,15 @@ namespace ClassLibrary1
         public override void RandomInit()
         {
             base.RandomInit();
-            if (rand.Next(0, 1) == 0)
-                Rings = false;
-            else Rings = true;
+            Rings = (rand.Next(0, 2) == 1);
+        }
+        public object Clone()                 //Глубокая копия
+        {
+            return new GasGigant(Name, Weight, Radius, id.Number, Satellites, Rings);
+        }
+        public object ShallowCopy()           //Поверхностное копирование
+        {
+            return this.MemberwiseClone();
         }
         public override bool Equals(object obj)
         {

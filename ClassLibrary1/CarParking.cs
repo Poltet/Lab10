@@ -109,23 +109,9 @@ namespace ClassLibrary1
         public virtual void Init()
         {
             Console.WriteLine("Введите количество парковочных мест");
-            try
-            {
-                NumSlots = int.Parse(Console.ReadLine());
-            }
-            catch
-            {
-                NumSlots = 20;
-            }
+            NumSlots = Input.IntInput();
             Console.WriteLine("Введите количество машин");
-            try
-            {
-                NumCars = int.Parse(Console.ReadLine());
-            }
-            catch
-            {
-                NumCars = 1;
-            }
+            NumCars = Input.IntInput();
         }
         public virtual void RandomInit()
         {

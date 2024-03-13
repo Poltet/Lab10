@@ -46,6 +46,7 @@
     <Compile Include="GasGigant.cs" />
     <Compile Include="IdNumber.cs" />
     <Compile Include="IInit.cs" />
+    <Compile Include="Input.cs" />
     <Compile Include="Planet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WeightComparer.cs" />

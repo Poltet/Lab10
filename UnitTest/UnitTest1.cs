@@ -153,7 +153,7 @@ namespace UnitTest
         [TestMethod]
         public void TestMethod_Planet_Constructor()
         {
-            Planet expected = new Planet(1);
+            Planet expected = new Planet("А510", 10, 10, 1, 1);
             Planet actual = new Planet();
             Assert.AreEqual(expected, actual);
         }
@@ -162,7 +162,7 @@ namespace UnitTest
         [TestMethod]
         public void TestMethod_GasGigant_Constructor()
         {
-            GasGigant expected = new GasGigant(true);
+            GasGigant expected = new GasGigant("А510", 10, 10, 1, 1, true);
             GasGigant actual = new GasGigant();
             Assert.AreEqual(expected, actual);
         }
@@ -171,7 +171,7 @@ namespace UnitTest
         [TestMethod]
         public void TestMethod_Star_Constructor()
         {
-            Star expected = new Star(-50);
+            Star expected = new Star("А510", 10, 10, 1, 3500);
             Star actual = new Star();
             Assert.AreEqual(expected, actual);
         }

@@ -5,7 +5,7 @@ namespace Lab10
 {
     public class Program
     {
-        static void StarTemperature(CelestialBody[] array)   //Средняя температура всех звёзд
+        static double StarTemperature(CelestialBody[] array)   //Средняя температура всех звёзд
         {
             int count = 0;
             double sum = 0;
@@ -18,10 +18,10 @@ namespace Lab10
                 }                   
             }
             if (count != 0)
-                Console.WriteLine($"Средняя температура звезд = {sum / count}");
-            else Console.WriteLine("Звезд нет");
+                return sum / count;
+                return 0;
         }
-        static void PlanetWeight(CelestialBody[] array)     //Сумма масс всех планет, не являющихся газовыми гигантами 
+        static double PlanetWeight(CelestialBody[] array)     //Сумма масс всех планет, не являющихся газовыми гигантами 
         { 
             double sum = 0;
             foreach (CelestialBody item in array)
@@ -29,21 +29,19 @@ namespace Lab10
                 if (typeof(Planet) == item.GetType())
                     sum += item.Weight;
             }
-            Console.WriteLine($"Сумма масс всех планет = {sum}"); 
+            return sum;
         }
-        static void GasGigantRadius(CelestialBody[] array)   // Максимальный радиус газовых гигантов с кольцами
+        static double GasGigantRadius(CelestialBody[] array)   // Максимальный радиус газовых гигантов с кольцами
         {
             double MaxRadius = 0;
             foreach(CelestialBody item in array)
             {
                 GasGigant g = item as GasGigant;
                 if (g != null && ((GasGigant)item).Rings)
-                    MaxRadius = Math.Max(MaxRadius, item.Radius);
+                    if (MaxRadius < item.Radius)
+                        MaxRadius = item.Radius;
             }
-            if (MaxRadius != 0)
-                Console.WriteLine($"Максимальный радиус газовых гигантов с кольцами = {MaxRadius}");
-            else
-                Console.WriteLine("Гигантов с кольцами не нашлось");
+            return MaxRadius;
         }
         static void Main(string[] args)
         {
@@ -82,11 +80,13 @@ namespace Lab10
             Console.WriteLine("\nПросмотр элементов массива с использованием не виртуальных методов:");
             foreach (CelestialBody item in array1)
             {
-                item.Show();
+                item.ShowCelBody();
             }
             Console.WriteLine("===== Конец массива с использованием не виртуальных методов ====\n");
 
-            StarTemperature(array1);           //2 part
+            Console.WriteLine($"Средняя температура звезд {StarTemperature(array1)}");         //2 part
+            Console.WriteLine($"Масса планет не гигантов {PlanetWeight(array1)}");
+            Console.WriteLine($"max радиус гигантов с кольцами {GasGigantRadius(array1)}");
             GasGigantRadius(array1);
             PlanetWeight(array1);
 
@@ -152,7 +152,7 @@ namespace Lab10
             if (index < 0)
                 Console.WriteLine("Элемент не найден"); 
             else
-                Console.WriteLine($"index 'B12' = {index + 1}");
+                Console.WriteLine($"index 'Ф12' = {index + 1}");
             //Copy                                 //копия и клон     
             CelestialBody body = new CelestialBody();
             body.RandomInit();
