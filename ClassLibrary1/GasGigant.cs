@@ -17,9 +17,15 @@ namespace ClassLibrary1
         {
             return "Газовый гигант: " + base.ToString() + $" ;Наличие колец - {Rings}";
         }
-        public override void Show()
+        public override void Show()              //Show виртуальный 
         {
-            Console.WriteLine($"Газовый гигант:\nИмя = {Name};  Вес = {Weight};  Радиус = {Radius};  Кол-во спутников = {Satellites};  Наличие колец - {Rings}\n");
+            base.Show();
+            Console.WriteLine($"Наличие колец - {Rings}\n");
+        }
+        public new void ShowCelBody()
+        {
+            base.ShowCelBody();
+            Console.WriteLine($"Наличие колец - {Rings}\n");
         }
         public override void Init()
         {
@@ -45,9 +51,13 @@ namespace ClassLibrary1
         }
         public override bool Equals(object obj)
         {
-            if (obj == null || GetType() != obj.GetType())
-                return false;
-            return ((GasGigant)obj).Weight == Weight && ((GasGigant)obj).Radius == Radius && ((GasGigant)obj).Satellites == Satellites && ((GasGigant)obj).Rings == Rings;
+            return (base.Equals(obj) && ((GasGigant)obj).Rings == Rings);
         }
+        //public override bool Equals(object obj)
+        //{
+        //    if (obj == null || GetType() != obj.GetType())
+        //        return false;
+        //    return ((GasGigant)obj).Weight == Weight && ((GasGigant)obj).Radius == Radius && ((GasGigant)obj).Satellites == Satellites && ((GasGigant)obj).Rings == Rings;
+        //}
     }
 }

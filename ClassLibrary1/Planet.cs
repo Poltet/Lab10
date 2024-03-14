@@ -30,9 +30,15 @@ namespace ClassLibrary1
         {
             return "Планета: " + base.ToString() + $"; Кол -во спутников = {Satellites}";
         }
-        public override void Show()
+        public override void Show()           //Show виртуальный 
         {
-            Console.WriteLine($"Планета:\nИмя = {Name};  Вес = {Weight};  Радиус = {Radius};  Кол-во спутников = {Satellites}\n");
+            base.Show();
+            Console.WriteLine($"Кол-во спутников = {Satellites}");
+        }
+        public new void ShowCelBody()
+        {
+            base.ShowCelBody();
+            Console.WriteLine($"Кол-во спутников = {Satellites}");
         }
         public override void Init()
         {
@@ -53,11 +59,15 @@ namespace ClassLibrary1
         {
             return this.MemberwiseClone();
         }
+        //public override bool Equals(object obj)
+        //{
+        //    if (obj == null)
+        //        return false;
+        //    return ((Planet)obj).Weight == Weight && ((Planet)obj).Radius == Radius && ((Planet)obj).Satellites == Satellites;
+        //}
         public override bool Equals(object obj)
         {
-            if (obj == null)
-                return false;
-            return ((Planet)obj).Weight == Weight && ((Planet)obj).Radius == Radius && ((Planet)obj).Satellites == Satellites;
+            return (base.Equals(obj) && ((Planet)obj).Satellites == Satellites);
         }
     }
 }

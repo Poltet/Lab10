@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using ClassLibrary1;
 
 namespace Lab10
@@ -19,32 +20,46 @@ namespace Lab10
             }
             if (count != 0)
                 return sum / count;
-                return 0;
+            return -1; // не может быть меньше 0
         }
         static double PlanetWeight(CelestialBody[] array)     //Сумма масс всех планет, не являющихся газовыми гигантами 
         { 
             double sum = 0;
+            int count = 0;
             foreach (CelestialBody item in array)
             {
                 if (typeof(Planet) == item.GetType())
+                {
                     sum += item.Weight;
+                    count++;
+                };
             }
-            return sum;
+            if (count != 0)
+                return sum;
+            return -1; // не может быть меньше 0
         }
         static double GasGigantRadius(CelestialBody[] array)   // Максимальный радиус газовых гигантов с кольцами
         {
             double MaxRadius = 0;
+            int count = 0;
             foreach(CelestialBody item in array)
             {
                 GasGigant g = item as GasGigant;
                 if (g != null && ((GasGigant)item).Rings)
                     if (MaxRadius < item.Radius)
+                    {
                         MaxRadius = item.Radius;
+                        count++;
+                    }
             }
+            if (count ==0)
+                return -1; // не может быть меньше 0
             return MaxRadius;
         }
         static void Main(string[] args)
         {
+            Star S1 = new Star();
+            S1.ShowCelBody();
             CelestialBody[] array1 = new CelestialBody[20];
             for (int i = 0; i < 5; i++)               // Небесное тело
             {
@@ -73,22 +88,30 @@ namespace Lab10
             Console.WriteLine("Просмотр элементов массива с использованием виртуальных методов:");
             foreach (CelestialBody item in array1)
             {
-                Console.WriteLine(item);
+                item.Show();                         //вывод с помощью не виртуальногоо метода                                  
                 Console.WriteLine();
             }
             Console.WriteLine("===== Конец массива с использованием виртуальных методов ====\n");
             Console.WriteLine("\nПросмотр элементов массива с использованием не виртуальных методов:");
             foreach (CelestialBody item in array1)
             {
-                item.ShowCelBody();
+                item.ShowCelBody();                  //вывод с помощью не виртуальногоо метода 
             }
             Console.WriteLine("===== Конец массива с использованием не виртуальных методов ====\n");
 
-            Console.WriteLine($"Средняя температура звезд {StarTemperature(array1)}");         //2 part
-            Console.WriteLine($"Масса планет не гигантов {PlanetWeight(array1)}");
-            Console.WriteLine($"max радиус гигантов с кольцами {GasGigantRadius(array1)}");
+
+            if (StarTemperature(array1) != -1)
+                Console.WriteLine($"Средняя температура звезд {StarTemperature(array1)}");         //2 part
+            else Console.WriteLine("Звезд не найдено");
+            if (PlanetWeight(array1) != -1)
+                Console.WriteLine($"Масса планет не гигантов {PlanetWeight(array1)}");
+            else Console.WriteLine("Планет, не являющихся газовыми гигантами не найдено");
+            if (GasGigantRadius(array1) != -1)
+                Console.WriteLine($"max радиус гигантов с кольцами {GasGigantRadius(array1)}");
+            else Console.WriteLine("Газовых гигантов с кольцами не найдено");
             GasGigantRadius(array1);
             PlanetWeight(array1);
+
 
             //3 part
             IInit[] array2 = new ClassLibrary1.IInit[15];
@@ -143,8 +166,8 @@ namespace Lab10
             CelestialBody cb = new CelestialBody("Ф12",100,122,1);
             array1[5] = cb;
             Array.Sort (array1);
-            int index = Array.BinarySearch(array1, new CelestialBody("Ф12", 100, 122,1));
-            Console.WriteLine("Новый массив отсортирован\n");
+            int index = Array.BinarySearch(array1, new CelestialBody("Ф12", 100, 122,1)); //первый поиск
+            Console.WriteLine("Новый массив отсортирован по имени\n");
             foreach (IInit item in array1)
             {
                 Console.WriteLine(item);
@@ -153,6 +176,20 @@ namespace Lab10
                 Console.WriteLine("Элемент не найден"); 
             else
                 Console.WriteLine($"index 'Ф12' = {index + 1}");
+
+            
+            Array.Sort(array1, new WeightComparer());
+            Console.WriteLine("Новый массив отсортирован по весу\n");
+            index = Array.BinarySearch(array1, new CelestialBody("Ф12", 100, 122, 1)); //второй поиск
+            foreach (IInit item in array1)
+            {
+                Console.WriteLine(item);
+            }
+            if (index < 0)
+                Console.WriteLine("Элемент не найден");
+            else
+                Console.WriteLine($"index 'Ф12' = {index + 1}");
+
             //Copy                                 //копия и клон     
             CelestialBody body = new CelestialBody();
             body.RandomInit();

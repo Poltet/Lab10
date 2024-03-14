@@ -11,7 +11,7 @@ namespace ClassLibrary1
             get { return temperature; }
             set
             {
-                if (value < 3000 || value > 30_000)
+                if (value < 3000 || value > 30000)
                     temperature = 3500;
                 else temperature = value;
             }             
@@ -28,9 +28,15 @@ namespace ClassLibrary1
         {
             return "Звезда: " + base.ToString() + $" ;Температура = {Temperature}";
         }
-        public override void Show()
+        public override void Show()              //Show виртуальный 
         {
-            Console.WriteLine($"Звезда:\nИмя = {Name};  Вес = {Weight};  Радиус = {Radius};  Температура = {Temperature}\n");
+            base.Show();
+            Console.WriteLine($"Температура = {Temperature}\n");
+        }
+        public new void ShowCelBody()
+        {
+            base.ShowCelBody();
+            Console.WriteLine($"Температура = {Temperature}");
         }
         public override void Init()
         {
@@ -51,22 +57,31 @@ namespace ClassLibrary1
         {
             return this.MemberwiseClone();
         }
-        public override bool Equals(object obj)
-        {
-            if (obj == null || GetType() != obj.GetType())
-                return false;
-            return ((Star)obj).Weight == Weight && ((Star)obj).Radius == Radius && ((Star)obj).Temperature == Temperature;
-        }
         //public override bool Equals(object obj)
         //{
-        //    return (base.Equals(obj) && ((Star)obj).Temperature == Temperature);         
+        //    if (obj == null || GetType() != obj.GetType())
+        //        return false;
+        //    return ((Star)obj).Weight == Weight && ((Star)obj).Radius == Radius && ((Star)obj).Temperature == Temperature;
         //}
+        public override bool Equals(object obj)
+        {
+            return (base.Equals(obj) && ((Star)obj).Temperature == Temperature);
+        }
         //public override bool Equals(object obj)
         //{
         //    if (!base.Equals(obj))
         //        return false;
-        //    Star st = (Star)obj;
+        //    Star st = obj as Star ;
+        //    if (st == null) return false;
         //    return st.Temperature == Temperature;
+        //}
+        //public override bool Equals(object obj)
+        //{
+        //    if (obj == null)
+        //        return false;
+        //    if (obj is Star s)
+        //        return base.Equals(obj) && s.Temperature == Temperature;
+        //    return ((Star)obj).Weight == Weight && ((Star)obj).Radius == Radius && ((Star)obj).Temperature == Temperature;
         //}
     }
 }

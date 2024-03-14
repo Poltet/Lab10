@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace ClassLibrary1
 {
@@ -13,9 +14,10 @@ namespace ClassLibrary1
             get { return name; }
             set
             {
-                if (value == "" || value == null)
-                    name = "No name";
-                else name = value;
+                Regex pattern = new Regex(@"[А-Яа-яA-Za-z0-9]+");
+                if (pattern.IsMatch(value))
+                    name = value;
+                else name = "No name";
             }
         }
         public double Weight              //масса
@@ -70,7 +72,7 @@ namespace ClassLibrary1
         }
         public void ShowCelBody()
         {
-            Console.WriteLine($"Небсное тело: Имя = {Name};  Вес = {Weight};  Радиус = {Radius}\n");
+            Console.WriteLine($"Небсное тело: Имя = {Name};  Вес = {Weight};  Радиус = {Radius}");
         }
         public virtual void Init()
         {
