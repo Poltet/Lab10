@@ -57,31 +57,14 @@ namespace ClassLibrary1
         {
             return this.MemberwiseClone();
         }
-        //public override bool Equals(object obj)
-        //{
-        //    if (obj == null || GetType() != obj.GetType())
-        //        return false;
-        //    return ((Star)obj).Weight == Weight && ((Star)obj).Radius == Radius && ((Star)obj).Temperature == Temperature;
-        //}
         public override bool Equals(object obj)
         {
             return (base.Equals(obj) && ((Star)obj).Temperature == Temperature);
         }
-        //public override bool Equals(object obj)
-        //{
-        //    if (!base.Equals(obj))
-        //        return false;
-        //    Star st = obj as Star ;
-        //    if (st == null) return false;
-        //    return st.Temperature == Temperature;
-        //}
-        //public override bool Equals(object obj)
-        //{
-        //    if (obj == null)
-        //        return false;
-        //    if (obj is Star s)
-        //        return base.Equals(obj) && s.Temperature == Temperature;
-        //    return ((Star)obj).Weight == Weight && ((Star)obj).Radius == Radius && ((Star)obj).Temperature == Temperature;
-        //}
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
+
     }
 }

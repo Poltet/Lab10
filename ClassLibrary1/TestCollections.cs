@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-
 namespace ClassLibrary1
 {
     public class TestCollections
@@ -47,11 +46,11 @@ namespace ClassLibrary1
             col3.Add(planet3);
             col4.Add(planet3.ToString());
         }
-        public (bool, TimeSpan) SearchTime(Planet SearchElement, int collection) //Поиск элемента и измерение времени
+        public (bool, long) SearchTime(Planet SearchElement, int collection) //Поиск элемента и измерение времени
         {
             Stopwatch stopwatch = new Stopwatch();
             bool ok = false;
-            TimeSpan time = stopwatch.Elapsed;
+            long time = stopwatch.ElapsedTicks;
             switch (collection)
             {
                 case 1:  //Коллекция 1
@@ -59,7 +58,7 @@ namespace ClassLibrary1
                         stopwatch.Restart();
                         ok = col1.Contains(SearchElement);
                         stopwatch.Stop();
-                        time = stopwatch.Elapsed;
+                        time = stopwatch.ElapsedTicks;
                         break;
                     }
                 case 2:  //Коллекция 2
@@ -67,7 +66,7 @@ namespace ClassLibrary1
                         stopwatch.Start();
                         ok = col2.Contains(SearchElement.ToString());
                         stopwatch.Stop();
-                        time = stopwatch.Elapsed; ;
+                        time = stopwatch.ElapsedTicks; ;
                         break;
                     }
                 case 3:  //Коллекция 3
@@ -75,7 +74,7 @@ namespace ClassLibrary1
                         stopwatch.Start();
                         ok = col3.Contains(SearchElement);
                         stopwatch.Stop();
-                        time = stopwatch.Elapsed;
+                        time = stopwatch.ElapsedTicks;
                         break;
                     }
                 case 4:  //Коллекция 4
@@ -83,7 +82,7 @@ namespace ClassLibrary1
                         stopwatch.Start();
                         ok = col4.Contains(SearchElement.ToString());
                         stopwatch.Stop();
-                        time = stopwatch.Elapsed;
+                        time = stopwatch.ElapsedTicks;
                         break;
                     }
             }

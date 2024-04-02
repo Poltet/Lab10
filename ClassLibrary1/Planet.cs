@@ -73,5 +73,9 @@ namespace ClassLibrary1
         {
             return (base.Equals(obj) && ((Planet)obj).Satellites == Satellites);
         }
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
     }
 }

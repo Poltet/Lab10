@@ -114,5 +114,9 @@ namespace ClassLibrary1
         {
             return this.MemberwiseClone();
         }
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
     }
 }

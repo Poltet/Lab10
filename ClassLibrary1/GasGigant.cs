@@ -53,6 +53,10 @@ namespace ClassLibrary1
         {
             return (base.Equals(obj) && ((GasGigant)obj).Rings == Rings);
         }
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
         //public override bool Equals(object obj)
         //{
         //    if (obj == null || GetType() != obj.GetType())
