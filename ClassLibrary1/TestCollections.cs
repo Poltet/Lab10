@@ -63,7 +63,7 @@ namespace ClassLibrary1
                     }
                 case 2:  //Коллекция 2
                     {
-                        stopwatch.Start();
+                        stopwatch.Restart();
                         ok = col2.Contains(SearchElement.ToString());
                         stopwatch.Stop();
                         time = stopwatch.ElapsedTicks; ;
@@ -71,7 +71,7 @@ namespace ClassLibrary1
                     }
                 case 3:  //Коллекция 3
                     {
-                        stopwatch.Start();
+                        stopwatch.Restart();
                         ok = col3.Contains(SearchElement);
                         stopwatch.Stop();
                         time = stopwatch.ElapsedTicks;
@@ -79,7 +79,7 @@ namespace ClassLibrary1
                     }
                 case 4:  //Коллекция 4
                     {
-                        stopwatch.Start();
+                        stopwatch.Restart();
                         ok = col4.Contains(SearchElement.ToString());
                         stopwatch.Stop();
                         time = stopwatch.ElapsedTicks;

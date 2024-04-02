@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="ClassLibrary1.CarParking" BaseTypeListCollapsed="true">
-    <Position X="13.25" Y="1" Width="1.5" />
+    <Position X="15.75" Y="1" Width="1.5" />
     <TypeIdentifier />
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
@@ -11,11 +11,11 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="ClassLibrary1.GasGigant">
-    <Position X="11.5" Y="4.5" Width="1.5" />
+    <Position X="11.5" Y="5.25" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="ClassLibrary1.IdNumber">
-    <Position X="15" Y="4" Width="1.5" />
+    <Position X="13.25" Y="4" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="ClassLibrary1.Planet">
@@ -27,12 +27,16 @@
     <TypeIdentifier />
   </Class>
   <Class Name="ClassLibrary1.WeightComparer" BaseTypeListCollapsed="true">
-    <Position X="15" Y="1" Width="1.5" />
+    <Position X="13.25" Y="1" Width="1.5" />
     <TypeIdentifier />
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="ClassLibrary1.TestCollections">
+    <Position X="13.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
   <Interface Name="ClassLibrary1.IInit">
-    <Position X="15" Y="2.5" Width="1.5" />
+    <Position X="13.25" Y="2.5" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Font Name="Segoe UI" Size="9" />
