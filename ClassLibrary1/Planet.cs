@@ -63,19 +63,10 @@ namespace ClassLibrary1
         {
             return this.MemberwiseClone();
         }
-        //public override bool Equals(object obj)
-        //{
-        //    if (obj == null)
-        //        return false;
-        //    return ((Planet)obj).Weight == Weight && ((Planet)obj).Radius == Radius && ((Planet)obj).Satellites == Satellites;
-        //}
+        
         public override bool Equals(object obj)
         {
             return (base.Equals(obj) && ((Planet)obj).Satellites == Satellites);
-        }
-        public override int GetHashCode()
-        {
-            return Name.GetHashCode();
         }
     }
 }
