@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using ClassLibrary1;
 
 namespace Lab10
@@ -180,7 +179,7 @@ namespace Lab10
             
             Array.Sort(array1, new WeightComparer());
             Console.WriteLine("Новый массив отсортирован по весу\n");
-            index = Array.BinarySearch(array1, new CelestialBody("Ф12", 100, 122, 1)); //второй поиск
+            index = Array.BinarySearch(array1, new CelestialBody("Ф12", 100, 122, 1), new WeightComparer()); //второй поиск
             foreach (IInit item in array1)
             {
                 Console.WriteLine(item);
@@ -208,7 +207,6 @@ namespace Lab10
             Console.WriteLine(body);
             Console.WriteLine(copy);
             Console.WriteLine(clon);
-
 
             Console.ReadLine();
         }

@@ -41,7 +41,7 @@ namespace ClassLibrary1
             base.RandomInit();
             Rings = (rand.Next(0, 2) == 1);
         }
-        public object Clone()                 //Глубокая копия
+        public override object Clone()                 //Глубокая копия
         {
             return new GasGigant(Name, Weight, Radius, id.Number, Satellites, Rings);
         }

@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace ClassLibrary1
 {
-    public class CelestialBody: IInit, IComparable//, ICloneable
+    public class CelestialBody: IInit, IComparable, ICloneable
     {
         protected double weight;
         protected double radius;
@@ -98,7 +98,6 @@ namespace ClassLibrary1
             if (obj == null) return false;
             CelestialBody c = (CelestialBody)obj;
             return Name == c.Name  && Weight == c.Weight && Radius == c.Radius && id.Number == c.id.Number;
-            //return ((CelestialBody)obj).Name == Name && ((CelestialBody)obj).Radius == Radius && ((CelestialBody)obj).Weight == Weight && ((CelestialBody)obj).id.Number == id.Number;
         } 
         public int CompareTo(object obj)
         {
@@ -107,7 +106,7 @@ namespace ClassLibrary1
                 return String.Compare(this.Name, c.Name);
             else return -1;         
         }
-        public object Clone()                 //Глубокая копия
+        public virtual object Clone()                 //Глубокая копия
         {
             return new CelestialBody(Name, Weight, Radius, id.Number);
         }

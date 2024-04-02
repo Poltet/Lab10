@@ -18,6 +18,10 @@ namespace ClassLibrary1
                 else satellites = value;
             }
         }
+        public CelestialBody GetBase
+        {
+            get => new CelestialBody();
+        }
         public Planet() : base()            //конструктор без параметров
         {
             Satellites = 1;
@@ -51,7 +55,7 @@ namespace ClassLibrary1
             base.RandomInit();
             Satellites = rand.Next(0, 1000);
         }
-        public object Clone()                 //Глубокая копия
+        public override object Clone()                 //Глубокая копия
         {
             return new Planet(Name, Weight, Radius, id.Number, Satellites);
         }

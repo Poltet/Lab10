@@ -49,7 +49,7 @@ namespace ClassLibrary1
             base.RandomInit();
             Temperature = rand.Next(3000, 10000) + Math.Round(rand.NextDouble(), 2);
         }
-        public object Clone()                 //Глубокая копия
+        public override object Clone()                 //Глубокая копия
         {
             return new Star(Name, Weight, Radius, id.Number, Temperature);
         }
