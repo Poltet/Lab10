@@ -20,7 +20,7 @@ namespace ClassLibrary1
         }
         public CelestialBody GetBase
         {
-            get => new CelestialBody();
+            get => new CelestialBody(name, weight, radius, id.Number);
         }
         public Planet() : base()            //конструктор без параметров
         {
