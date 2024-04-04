@@ -32,7 +32,7 @@ namespace ClassLibrary1
         {
             Stopwatch stopwatch = new Stopwatch();
             bool ok = false;
-            long time = stopwatch.ElapsedTicks;
+            long time = 0;
             switch (collection)
             {
                 case 1:  //Коллекция 1
