@@ -3,12 +3,13 @@ using System.Text.RegularExpressions;
 
 namespace ClassLibrary1
 {
-    public class CelestialBody: IInit, IComparable, ICloneable
+    public class CelestialBody: IInit, IComparable, ICloneable, IHasName
     {
         protected double weight;
         protected double radius;
         protected string name;
-        protected Random rand = new Random();
+        public IdNumber id;               //индекс
+        static protected Random rand = new Random();
         public string Name                //название
         {
             get { return name; }
@@ -46,7 +47,6 @@ namespace ClassLibrary1
                 else radius = value;
             }
         }
-        public IdNumber id;               //индекс
         static string[] Names = {"Сириус", "Солнце", "Земля", "Марс", "Юпитер", "Вега", "Антарес", "Арктур", "Алькор", "Сатурн", "Уран", "Нептун", "Тампеля", "Глизе", "Денеб", "Мицар", "Алиот", "Кастор", "Авиор", "Луна", "Ио", "Диона", "Тефия", "Миранда" };
         public CelestialBody()            //конструктор без параметров
         {
@@ -101,9 +101,17 @@ namespace ClassLibrary1
         } 
         public int CompareTo(object obj)
         {
-            CelestialBody c = obj as CelestialBody;
-            if (c != null)
-                return String.Compare(this.Name, c.Name);
+            CelestialBody celbody = obj as CelestialBody;
+            if (celbody != null)
+            {
+                if (this.Name.CompareTo(celbody.Name) != 0)            //Сравнение имени
+                    return this.Name.CompareTo(celbody.Name);         
+                if (this.Weight.CompareTo(celbody.Weight) != 0)        //Сравнение веса
+                    return this.Weight.CompareTo(celbody.Weight);
+                if (this.Radius.CompareTo(celbody.Radius) != 0)        //Сравненние радиуса
+                    return (this.Radius.CompareTo(celbody.Radius));
+                return (this.id.Number.CompareTo(celbody.id.Number));  //Сравнение ID
+            }           
             else return -1;         
         }
         public virtual object Clone()                 //Глубокая копия
@@ -113,6 +121,18 @@ namespace ClassLibrary1
         public object ShallowCopy()           //Поверхностное копирование
         {
             return this.MemberwiseClone();
+        }
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + id.Number.GetHashCode();
+                hash = hash * 23 + Name.GetHashCode();
+                hash = hash * 23 + Weight.GetHashCode();
+                hash = hash * 23 + Radius.GetHashCode();
+                return hash;
+            }
         }
     }
 }

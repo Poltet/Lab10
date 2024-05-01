@@ -61,5 +61,9 @@ namespace ClassLibrary1
         {
             return (base.Equals(obj) && ((Star)obj).Temperature == Temperature);
         }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

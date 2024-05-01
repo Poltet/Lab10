@@ -45,6 +45,7 @@
     <Compile Include="CelestialBody.cs" />
     <Compile Include="GasGigant.cs" />
     <Compile Include="IdNumber.cs" />
+    <Compile Include="IHasName.cs" />
     <Compile Include="IInit.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Planet.cs" />

@@ -38,7 +38,7 @@ namespace ClassLibrary1
             {
                 case 1:  //Коллекция 1
                     {
-                        stopwatch.Start();
+                        stopwatch.Restart();
                         ok = col1.Contains(SearchElement);
                         stopwatch.Stop();
                         time = stopwatch.ElapsedTicks;
@@ -46,25 +46,27 @@ namespace ClassLibrary1
                     }
                 case 2:  //Коллекция 2
                     {
-                        stopwatch.Start();
-                        ok = col2.Contains(SearchElement.ToString());
+                        string SearchElement1 = SearchElement.ToString();
+                        stopwatch.Restart();
+                        ok = col2.Contains(SearchElement1);
                         stopwatch.Stop();
                         time = stopwatch.ElapsedTicks; ;
                         break;
                     }
                 case 3:  //Коллекция 3
                     {
-                        stopwatch.Start();
-                        ok = col3.Contains(SearchElement);
+                        CelestialBody SearchElement1 = SearchElement.GetBase;
+                        stopwatch.Restart();
+                        ok = col3.Contains(SearchElement1);
                         stopwatch.Stop();
                         time = stopwatch.ElapsedTicks;
-                        Console.WriteLine(col3.Count);
                         break;
                     }
                 case 4:  //Коллекция 4
                     {
-                        stopwatch.Start();
-                        ok = col4.Contains(SearchElement.ToString());
+                        string SearchElement1 = SearchElement.GetBase.ToString();
+                        stopwatch.Restart();
+                        ok = col4.Contains(SearchElement1);
                         stopwatch.Stop();
                         time = stopwatch.ElapsedTicks;
                         break;

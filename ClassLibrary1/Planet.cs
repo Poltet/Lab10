@@ -18,6 +18,9 @@ namespace ClassLibrary1
                 else satellites = value;
             }
         }
+        /// <summary>
+        /// Свойство, возвращающее значение базового класса
+        /// </summary>
         public CelestialBody GetBase
         {
             get => new CelestialBody(name, weight, radius, id.Number);
@@ -62,11 +65,14 @@ namespace ClassLibrary1
         public object ShallowCopy()           //Поверхностное копирование
         {
             return this.MemberwiseClone();
-        }
-        
+        }       
         public override bool Equals(object obj)
         {
             return (base.Equals(obj) && ((Planet)obj).Satellites == Satellites);
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }
