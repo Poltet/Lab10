@@ -72,7 +72,9 @@ namespace ClassLibrary1
         }
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            int hash = base.GetHashCode();
+            hash = hash * 23 + Satellites.GetHashCode();
+            return hash;
         }
     }
 }

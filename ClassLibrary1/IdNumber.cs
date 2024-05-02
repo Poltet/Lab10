@@ -33,5 +33,12 @@ namespace ClassLibrary1
                 return this.Number == n.Number;
             return false;
         }
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return Number.GetHashCode();
+            }
+        }
     }
 }
