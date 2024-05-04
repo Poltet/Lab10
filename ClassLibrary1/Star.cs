@@ -26,7 +26,7 @@ namespace ClassLibrary1
         }
         public override string ToString()
         {
-            return "Звезда: " + base.ToString() + $" ;Температура = {Temperature}";
+            return "Звезда: " + base.BaseInf() + $"; Температура = {Temperature}";
         }
         public override void Show()              //Show виртуальный 
         {

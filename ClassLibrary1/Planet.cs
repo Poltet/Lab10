@@ -35,17 +35,21 @@ namespace ClassLibrary1
         }
         public override string ToString()
         {
-            return "Планета: " + base.ToString() + $"; Кол -во спутников = {Satellites}";
+            return "Планета: " + BaseInf();
+        }
+        protected override string BaseInf()
+        {
+            return base.BaseInf() + $"; Спутники = {Satellites}";
         }
         public override void Show()           //Show виртуальный 
         {
             base.Show();
-            Console.WriteLine($"Кол-во спутников = {Satellites}");
+            Console.WriteLine($"Спутники = {Satellites}");
         }
         public new void ShowCelBody()
         {
             base.ShowCelBody();
-            Console.WriteLine($"Кол-во спутников = {Satellites}");
+            Console.WriteLine($"Спутники = {Satellites}");
         }
         public override void Init()
         {

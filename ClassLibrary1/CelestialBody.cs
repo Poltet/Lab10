@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace ClassLibrary1
 {
-    public class CelestialBody: IInit, IComparable, ICloneable, IHasName
+    public class CelestialBody: IInit, IComparable<CelestialBody>, ICloneable, IHasName
     {
         protected double weight;
         protected double radius;
@@ -68,7 +68,11 @@ namespace ClassLibrary1
         }
         public override string ToString()
         {
-            return $"Небесное тело: Имя = {Name};  Вес = {Weight}; Радиус = {Radius}; id: {id.Number}";
+            return $"Небесное тело: " + BaseInf();
+        }
+        protected virtual string BaseInf()
+        {
+            return $"{Name},  Вес = {Weight}; Радиус = {Radius}; id: {id.Number}";
         }
         public void ShowCelBody()
         {
@@ -89,8 +93,8 @@ namespace ClassLibrary1
         public virtual void RandomInit()      // Метод для формирования объектов класса с помощью ДСЧ
         {
             Name = Names[rand.Next(Names.Length)];
-            Weight = rand.Next(0, 10000) + Math.Round(rand.NextDouble(), 2);
-            Radius = rand.Next(0, 10000) + Math.Round(rand.NextDouble(), 2);
+            Weight = rand.Next(0, 10000);
+            Radius = rand.Next(0, 10000); 
             id.Number = rand.Next(1,100);
         }
         public override bool Equals(object obj)
@@ -101,18 +105,25 @@ namespace ClassLibrary1
         } 
         public int CompareTo(object obj)
         {
-            CelestialBody celbody = obj as CelestialBody;
+            if (obj is CelestialBody celbody)
+            {
+                return CompareTo(celbody);
+            }
+            else return -1;         
+        }
+        public int CompareTo(CelestialBody celbody)
+        {
             if (celbody != null)
             {
                 if (this.Name.CompareTo(celbody.Name) != 0)            //Сравнение имени
-                    return this.Name.CompareTo(celbody.Name);         
+                    return this.Name.CompareTo(celbody.Name);
                 if (this.Weight.CompareTo(celbody.Weight) != 0)        //Сравнение веса
                     return this.Weight.CompareTo(celbody.Weight);
                 if (this.Radius.CompareTo(celbody.Radius) != 0)        //Сравненние радиуса
                     return (this.Radius.CompareTo(celbody.Radius));
                 return (this.id.Number.CompareTo(celbody.id.Number));  //Сравнение ID
-            }           
-            else return -1;         
+            }
+            else return -1;
         }
         public virtual object Clone()                 //Глубокая копия
         {
