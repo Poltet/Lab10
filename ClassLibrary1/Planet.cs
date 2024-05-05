@@ -35,7 +35,7 @@ namespace ClassLibrary1
         }
         public override string ToString()
         {
-            return "Планета: " + BaseInf();
+            return BaseInf() + " (Планета)";
         }
         protected override string BaseInf()
         {

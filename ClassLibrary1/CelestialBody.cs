@@ -68,7 +68,7 @@ namespace ClassLibrary1
         }
         public override string ToString()
         {
-            return $"Небесное тело: " + BaseInf();
+            return BaseInf() + " (Небесное тело)";
         }
         protected virtual string BaseInf()
         {
@@ -78,9 +78,10 @@ namespace ClassLibrary1
         {
             Console.WriteLine($"Небсное тело: Имя = {Name};  Вес = {Weight};  Радиус = {Radius}");
         }
-        public virtual void Init()
+        public virtual void Init()  // Метод для ввода  с клавиатуры
         {
-            Console.WriteLine("Введите id");  // Метод для ввода  с клавиатуры
+            Console.WriteLine("\nВведите данные о небесном теле:");
+            Console.WriteLine("Введите id");  
             id.Number = Input.IntInput();
             Console.WriteLine("Введите название небесного тела");
             Name = Console.ReadLine();

@@ -15,7 +15,7 @@ namespace ClassLibrary1
         }
         public override string ToString()
         {
-            return "Газовый гигант: " + base.BaseInf() + "; " + (Rings ? "Кольца есть" : "Колец нет");
+            return base.BaseInf() + "; " + (Rings ? "Кольца есть" : "Колец нет") + " (Газовый гигант)" ;
         }
         public override void Show()              //Show виртуальный 
         {
